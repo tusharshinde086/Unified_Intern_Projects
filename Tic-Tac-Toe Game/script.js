@@ -34,15 +34,25 @@ function handleClick(e) {
         setBoardHoverClass();
     }
 }
-
 function endGame(draw) {
     if (draw) {
         statusDisplay.textContent = "It's a Draw!";
     } else {
         statusDisplay.textContent = `Player ${isXTurn ? 'X' : 'O'} Wins!`;
+        highlightWinningCells();
     }
     cells.forEach(cell => cell.removeEventListener('click', handleClick));
 }
+
+function highlightWinningCells() {
+    const currentClass = isXTurn ? 'x' : 'o';
+    winningCombinations.forEach(combination => {
+        if (combination.every(index => cells[index].classList.contains(currentClass))) {
+            combination.forEach(index => cells[index].classList.add('winning'));
+        }
+    });
+}
+
 
 function isDraw() {
     return [...cells].every(cell => cell.classList.contains('x') || cell.classList.contains('o'));
