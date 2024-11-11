@@ -33,3 +33,33 @@ h1 {
     grid-gap: 5px;
     margin-bottom: 20px;
 }
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #333;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #f3f3f3;
+}
+
+#restart {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#restart:hover {
+    background-color: #0056b3;
+}
