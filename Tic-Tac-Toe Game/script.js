@@ -45,18 +45,14 @@ function endGame(draw) {
 }
 
 function isDraw() {
-    return [...cells].every(cell => cell.classList.contains('x') || cell.classList.contains('o'));
-}
+    return [...cells]
 
 function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass);
-    cell.textContent = currentClass.toUpperCase();
+    cell.classList.add(currentClass);urrentClass.toUpperCase();
 }
 
 function swapTurns() {
-    isXTurn = !isXTurn;
-    statusDisplay.textContent = `Player ${isXTurn ? 'X' : 'O'}'s Turn`;
-}
+    
 
 function setBoardHoverClass() {
     board.classList.remove('x', 'o');
