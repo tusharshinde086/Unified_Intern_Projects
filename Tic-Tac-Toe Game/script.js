@@ -12,14 +12,22 @@ const winningCombinations = [
 
 function startGame() {
     isXTurn = true;
+
     cells.forEach(cell => {
-        cell.classList.remove('x', 'o');
-        cell.textContent = '';
+        cell.classList.remove('x', 'o'); // Remove any previous player class
+        cell.textContent = '';           // Clear cell content
+        cell.style.backgroundColor = ''; // Clear inline background color, if any
+
+        // Reset the click event listener
+        cell.removeEventListener('click', handleClick); // Ensure no duplicate event listeners
         cell.addEventListener('click', handleClick, { once: true });
     });
+
     setBoardHoverClass();
+
     statusDisplay.textContent = "Player X's Turn";
 }
+
 
 function handleClick(e) {
     const cell = e.target;

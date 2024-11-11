@@ -16,10 +16,12 @@ body {
 .container {
     text-align: center;
     color: #61dafb;
+    animation: fadeIn 1s ease-in-out;
 }
 
 h1 {
     margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
 }
 
 #status {
@@ -45,7 +47,7 @@ h1 {
     justify-content: center;
     cursor: pointer;
     color: #fff;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .cell.x {
@@ -60,9 +62,20 @@ h1 {
     background-color: #555;
 }
 
+.cell:active {
+    transform: scale(1.1); /* Scale-up effect on click */
+}
+
 .cell.winning {
     background-color: #ffe66d; /* Highlight for winning cells */
     color: #282c34;
+    animation: winningHighlight 1s ease forwards;
+}
+
+@keyframes winningHighlight {
+    0% { background-color: #ffe66d; transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 #restart {
@@ -73,9 +86,25 @@ h1 {
     color: #282c34;
     border: none;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #restart:hover {
     background-color: #4ecdc4;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+#restart:active {
+    transform: scale(0.95); /* Button "press" effect */
+}
+
+/* Additional Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
