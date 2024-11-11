@@ -45,21 +45,31 @@ function endGame(draw) {
 }
 
 function isDraw() {
-    return [...cells]
+    return [...cells].every(cell => cell.classList.contains('x') || cell.classList.contains('o'));
+}
 
 function placeMark(cell, currentClass) {
-    cell.classList.add(currentClass);urrentClass.toUpperCase();
+    cell.classList.add(currentClass);
+    cell.textContent = currentClass.toUpperCase();
 }
 
 function swapTurns() {
-    
+    isXTurn = !isXTurn;
+    statusDisplay.textContent = `Player ${isXTurn ? 'X' : 'O'}'s Turn`;
+}
 
 function setBoardHoverClass() {
     board.classList.remove('x', 'o');
     board.classList.add(isXTurn ? 'x' : 'o');
 }
 
-
+function checkWin(currentClass) {
+    return winningCombinations.some(combination => {
+        return combination.every(index => {
+            return cells[index].classList.contains(currentClass);
+        });
+    });
+}
 
 restartButton.addEventListener('click', startGame);
 startGame();
