@@ -14,19 +14,18 @@ function startGame() {
     isXTurn = true;
 
     cells.forEach(cell => {
-        cell.classList.remove('x', 'o'); // Remove any previous player class
-        cell.textContent = '';           // Clear cell content
-        cell.style.backgroundColor = ''; // Clear inline background color, if any
+        cell.classList.remove('x', 'o', 'winning'); // Remove previous player and winning classes
+        cell.textContent = '';                       
+        cell.style.backgroundColor = '';             
 
-        // Reset the click event listener
-        cell.removeEventListener('click', handleClick); // Ensure no duplicate event listeners
+        cell.removeEventListener('click', handleClick); 
         cell.addEventListener('click', handleClick, { once: true });
     });
 
-    setBoardHoverClass();
-
+    setBoardHoverClass(); // Update hover effect for the current player
     statusDisplay.textContent = "Player X's Turn";
 }
+
 
 
 function handleClick(e) {
